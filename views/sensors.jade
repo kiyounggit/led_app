@@ -1,0 +1,14 @@
+extends layout
+
+block content
+
+  script(src='/javascripts/button.js')
+  h1= type
+  p Welcome to #{name}
+  p=message
+    ul
+      each val, index in sensors
+        li=  index + ':' + val.name + '('+val.switch+')'
+          img(src='/images/light_off.png', id='img_light')
+          button(id= index)  #{index}
+          script(src='/javascripts/button.js')
