@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://kiyoung:kiyoung@192.168.0.5:27017/kiyoung');
+mongoose.connect('mongodb://kiyoung:kiyoung@192.168.170.3:27017/kiyoung');
 
 var ledSchema = new mongoose.Schema({
   type : String,
@@ -56,6 +56,7 @@ exports.updateLed = function(req, res){
     });
   });
 };
+
 exports.deleteLedById = function(req, res){
   console.log("Deleting a led : " + req.params.id);
   return ledmodel.remove({_id : req.params.id}, function(err, led){

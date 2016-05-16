@@ -2,13 +2,17 @@ extends layout
 
 block content
 
-  script(src='/javascripts/button.js')
-  h1= type
+  script(src='/javascripts/light.js')
+  h1= name
   p Welcome to #{name}
-  p=message
-    ul
-      each val, index in sensors
+  ul
+     each val, index in sensors
         li=  index + ':' + val.name + '('+val.switch+')'
-          img(src='/images/light_off.png', id='img_light')
-          button(id= index)  #{index}
-          script(src='/javascripts/button.js')
+           img(src='/images/light_off.png', id='img_light'+index)
+           button(id= 'btn_button'+index)  Click
+           
+           script(type="text/javascript").
+              document.getElementById("btn_button"+#{index})
+                 .addEventListener("click",function(){
+                   toggleImage(#{index});
+                   }, false);
